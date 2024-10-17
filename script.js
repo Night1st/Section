@@ -1,18 +1,19 @@
 let product = {
     children: [
-        {color: '#7F887C', size: '3-Seater (Queen)', price: '$999.00', oldPrice: '$1,299.00', status: "In stock", image: "images/CushyLuxe_Gumleaf_Queen_5.webp"},
-        {color: '#7F887C', size: '2.5-Seater (Double)', price: '$999.00', oldPrice: '', status: "In stock", image: "images/CushyLuxe_Gumleaf_Double_5.webp"},
-        {color: '#7F887C', size: '1.5-Seater (Single)', price: '$699.00', oldPrice: '$799.00', status: "Sold out", image: "images/CushyLuxe_Gumleaf_Single_5.webp"},
-        {color: '#14131A', size: '3-Seater (Queen)', price: '$1.299.00', oldPrice: '', status: "In stock", image: "images/Cushy_Ink_Queen_5.webp"},
-        {color: '#14131A', size: '2.5-Seater (Double)', price: '$899.00', oldPrice: '$999.00', status: "In stock", image: "images/Cushy_Ink_Double_5.webp"},
-        {color: '#14131A', size: '1.5-Seater (Single)', price: '$799.00', oldPrice: '', status: "In stock", image: "images/Cushy_Ink_Single_5.webp"},
-        {color: '#808185', size: '3-Seater (Queen)', price: '$999.00', oldPrice: '$1,299.00', status: "In stock", image: "images/Cushy_Tinny_Queen_5.webp"},
-        {color: '#808185', size: '2.5-Seater (Double)', price: '$999.00', oldPrice: '', status: "In stock", image: "images/Cushy_Tinny_Double_5.webp"},
-        {color: '#808185', size: '1.5-Seater (Single)', price: '$799.00', oldPrice: '', status: "Sold out", image: "images/Cushy_Tinny_Single_5.webp"},
+        {id: 0, color: '#7F887C', size: '3-Seater (Queen)', price: '$999.00', oldPrice: '$1,299.00', status: "In stock", image: "images/CushyLuxe_Gumleaf_Queen_5.webp"},
+        {id: 1, color: '#7F887C', size: '2.5-Seater (Double)', price: '$999.00', oldPrice: '', status: "In stock", image: "images/CushyLuxe_Gumleaf_Double_5.webp"},
+        {id: 2, color: '#7F887C', size: '1.5-Seater (Single)', price: '$699.00', oldPrice: '$799.00', status: "Sold out", image: "images/CushyLuxe_Gumleaf_Single_5.webp"},
+        {id: 3, color: '#14131A', size: '3-Seater (Queen)', price: '$1.299.00', oldPrice: '', status: "In stock", image: "images/Cushy_Ink_Queen_5.webp"},
+        {id: 4, color: '#14131A', size: '2.5-Seater (Double)', price: '$899.00', oldPrice: '$999.00', status: "In stock", image: "images/Cushy_Ink_Double_5.webp"},
+        {id: 5, color: '#14131A', size: '1.5-Seater (Single)', price: '$799.00', oldPrice: '', status: "In stock", image: "images/Cushy_Ink_Single_5.webp"},
+        {id: 6, color: '#808185', size: '3-Seater (Queen)', price: '$999.00', oldPrice: '$1,299.00', status: "In stock", image: "images/Cushy_Tinny_Queen_5.webp"},
+        {id: 7, color: '#808185', size: '2.5-Seater (Double)', price: '$999.00', oldPrice: '', status: "In stock", image: "images/Cushy_Tinny_Double_5.webp"},
+        {id: 8, color: '#808185', size: '1.5-Seater (Single)', price: '$799.00', oldPrice: '', status: "Sold out", image: "images/Cushy_Tinny_Single_5.webp"},
     ]
 }
 
 let options = {
+    id: 0,
     color: null,
     size: null,
     price: null,
@@ -21,6 +22,7 @@ let options = {
     image: null
 }
 
+const slider = document.getElementById("image-slider")
 const images = document.getElementById("variant-images-pagination")
 const colors = document.getElementById("colors")
 const sizes = document.getElementById("sizes")
@@ -38,12 +40,15 @@ const showProduct = () => {
 
         li.addEventListener('click', () => {
             options.color = options.color !== color ? color : null
-            slider.scrollTo({
-                left: slider.clientWidth * index,
-                behavior: 'smooth'
-            });
-            updateDots(index);
-            setPrice()
+            if(options.color && options.size) {
+                console.log(options)
+            }
+            // slider.scrollTo({
+            //     left: slider.clientWidth * index,
+            //     behavior: 'smooth'
+            // });
+            // updateDots(index);
+            // setPrice()
         })
     })
     let listSizes = product.children.map(children => children.size)
@@ -56,12 +61,17 @@ const showProduct = () => {
 
         li.addEventListener('click', () => {
             options.size = options.size !== size ? size : null
-            slider.scrollTo({
-                left: slider.clientWidth * index,
-                behavior: 'smooth'
-            });
-            updateDots(index);
-            setPrice()
+            if(options.color && options.size) {
+                console.log(options)
+            }
+            // slider.scrollTo({
+            //     left: slider.clientWidth * index,
+            //     behavior: 'smooth'
+            // });
+            // updateDots(index);
+            // setPrice()
         })
     })
 }
+
+showProduct()
